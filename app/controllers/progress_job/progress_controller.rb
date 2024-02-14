@@ -12,7 +12,7 @@ module ProgressJob
         if @job.present?
           render json: {message: "Job Completed"}, status: 205
         else
-          render status: 404
+          render json: {message: "Job Not Found"}, status: 404
         end
       end
     end
