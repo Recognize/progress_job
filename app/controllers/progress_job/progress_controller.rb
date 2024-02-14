@@ -8,7 +8,7 @@ module ProgressJob
         percentage = !@delayed_job.progress_max.zero? ? @delayed_job.progress_current / @delayed_job.progress_max.to_f * 100 : 0
         render json: @delayed_job.attributes.merge!(percentage: percentage).to_json
       else
-        @job = $redis.get("progress_job:#{@delayed_job.id}")
+        @job = $redis.get("progress_job:#{params[:job_id]}")
         if @job.present?
           render json: {message: "Job Completed"}, status: 205
         else
