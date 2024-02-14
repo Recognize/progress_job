@@ -10,7 +10,7 @@ module ProgressJob
       else
         @job = $redis.get("progress_job:#{@delayed_job.id}")
         if @job.present?
-          render json: {message: "Job Completed"}, status: 202
+          render json: {message: "Job Completed"}, status: 205
         else
           render status: 404
         end
